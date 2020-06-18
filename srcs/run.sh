@@ -3,7 +3,6 @@
 echo "Running ft_server..."
 
 # Info
-ip addr show eth0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'
 php -v
 nginx -v
 
@@ -39,7 +38,7 @@ mv /tmp/config.inc.php /var/www/html/phpmyadmin/
 
 chown -R www-data:www-data /var/www/html/*
 chmod -R 755 /var/www/html/*
-
+echo "<?php phpinfo(); ?>" >> /var/www/html/index.php
 
 # Start
 service php7.3-fpm start
@@ -48,7 +47,7 @@ service nginx restart
 service nginx status
 service php7.3-fpm status
 
-
+hostname -I | awk '{print $1}'
 echo "ft_server starting."
 
 tail -f /dev/null
