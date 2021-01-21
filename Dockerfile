@@ -2,7 +2,9 @@ FROM debian:buster
 #MAINTAINER lucocozz <lucocozz@student.42.fr>
 
 # Setup
-RUN	apt-get update && apt-get upgrade -y
+RUN apt-get update
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends apt-utils
+RUN	apt-get upgrade -y
 RUN	apt-get install -y nginx
 RUN	apt-get install -y mariadb-server
 RUN	apt-get install -y wget
