@@ -6,6 +6,18 @@ echo "Running ft_server..."
 php -v
 nginx -v
 
+if (( $(ps -ef | grep -v grep | grep nginx | wc -l) > 0 ))
+then
+	if [ "$AUTOINDEX" = "off" ]
+	then cp /tmp/default_off /etc/nginx/sites-available/default ;
+    else cp /tmp/default_on /etc/nginx/sites-available/default ; fi
+service nginx reload
+else
+	if [ "$AUTOINDEX" = "off" ]
+	then cp /tmp/default_off /etc/nginx/sites-available/default ;
+    else cp /tmp/default_on /etc/nginx/sites-available/default ; fi
+fi
+
 
 # SSL
 mkdir /etc/nginx/ssl
@@ -26,6 +38,7 @@ wget https://fr.wordpress.org/latest-fr_FR.tar.gz
 tar -zxvf latest-fr_FR.tar.gz
 rm latest-fr_FR.tar.gz
 mv wordpress /var/www/html/wordpress
+mv /var/www/html/wp-config.php /var/www/html/wordpress
 
 
 # PhpMyAdmin

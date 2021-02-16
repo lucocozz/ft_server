@@ -15,7 +15,7 @@ $ sudo docker rmi image_id
 ```
  Run un container:
  ```sh
- $ sudo docker run --name=ft_server -it -p 80:80 -p 443:443 ft_server
+ $ sudo docker run --env AUTOINDEX=on --name=ft_server -it -p 80:80 -p 443:443 ft_server
  ```
    Liste tout les containers:
  ```sh
@@ -45,4 +45,13 @@ $ sudo docker rmi image_id
  ```sh
  $ sudo docker container rm $(docker ps –aq)
  ```
+ Console bash:
+ ```sh
+ sudo docker exec -it ft_server bash
+ ```
  https://phoenixnap.com/kb/how-to-list-start-stop-docker-containers
+
+### **liens d'acces:**
+
+ `https://localhost/wordpress/wp-config.php`
+ `https://localhost/phpmyadmin/`
