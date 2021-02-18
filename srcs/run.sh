@@ -6,6 +6,7 @@ echo "Running ft_server..."
 php -v
 nginx -v
 
+# Autoindex
 if (( $(ps -ef | grep -v grep | grep nginx | wc -l) > 0 ))
 then
 	if [ "$AUTOINDEX" = "off" ]
@@ -51,7 +52,7 @@ mv /tmp/config.inc.php /var/www/html/phpmyadmin/
 
 chown -R www-data:www-data /var/www/html/*
 chmod -R 755 /var/www/html/*
-echo "<?php phpinfo(); ?>" >> /var/www/html/index.php
+# echo "<?php phpinfo(); ?>" >> /var/www/html/index.php
 
 # Start
 service php7.3-fpm start
