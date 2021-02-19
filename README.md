@@ -1,5 +1,5 @@
 # ft_server
-
+![100](https://i.imgur.com/J4tLfDt.png)
 ### **Docker command memo:**
 Build une image:
  ```sh
